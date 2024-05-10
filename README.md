@@ -1,2 +1,2 @@
 # python-things
-hehehehe
+things like searching/sorting algorithms, and other maths stuff maybe
