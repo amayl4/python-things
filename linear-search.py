@@ -8,3 +8,5 @@ for num in range(0, len(arr)):
     if arr[num] == target:
         print(num+1) # array indexing always gives the (n-1)th index so +1 returns the nth index
         break # stops the for loop from going on forever
+
+# Time complexity: O(n)

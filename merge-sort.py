@@ -34,3 +34,5 @@ def merge_sort(arr):
 
 merge_sort(array)
 print(array)
+
+# Time complexity: O(n*log(n))

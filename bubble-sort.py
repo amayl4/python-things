@@ -9,3 +9,5 @@ for i in range(n):
             arr[i], arr[j] = arr[j], arr[i]
 
 print("Sorted list is:\n", arr)
+
+# Time complexity: O(n^2)
