@@ -7,17 +7,11 @@
 
 import math as m
 
-i = [
-    1,
-    0
-]
-j = [
-    0,
-    1
-]
+a = int(input("Enter value for a for the vector ai+bj:\n"))
+b = int(input("Enter value for b for the vector ai+bj:\n"))
 
-a = int(input("Enter value for a:\n"))
-b = int(input("Enter value for b:\n"))
+modR = m.sqrt(a**2 + b**2)
+theta = m.atan(b / a)
 
-cartesian = a*i + b*j
-print(cartesian)
+polarCord = [modR, theta]
+print(polarCord)
