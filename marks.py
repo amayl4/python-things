@@ -10,3 +10,12 @@ obtained by a student in each subject is 100.
 # 3. return the total marks out of 800
 # 4. find the percentage by dividing by 800 then multiplying by 100
 
+# enter all the marks
+total = 0
+for i in range(0,7):
+    total += int(input("Enter the marks for a subject: "))
+print(total)
+
+# finding percentage
+percentage = (total / 8)
+print(percentage)
