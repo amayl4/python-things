@@ -23,3 +23,4 @@ result = linprog(c, A_ub=A, b_ub=b, bounds=[x_bounds, y_bounds], method='simplex
 print('Optimal value:', -result.fun)
 print('x:', result.x[0])
 print('y:', result.x[1])
+
