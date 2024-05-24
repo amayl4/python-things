@@ -1,25 +1,22 @@
 '''
-100 -> 9
-80 -> 8
-70 -> 7
-60 -> 6
-50 -> 5
+100 -> A*
+80 -> A
+70 -> B
+60 -> C
+50 -> D
 ...
-10 -> 1
+10 -> F
 0 -> U
 '''
 
-rawMark = int(input("Enter your raw mark: \n"))
+rawMark = int(input("Enter the raw mark: "))
 
-if rawMark <= 100 and rawMark >= 80:
-    print("Grade 9")
-elif rawMark <= 80 and rawMark >= 70:
-    print("Grade 8")
-elif rawMark <= 70 and rawMark >= 60:
-    print("Grade 7")
-elif rawMark == 0:
-    print("You failed")
+def grade(rawMark):
+    if rawMark <= 100 and rawMark >= 80:
+        print("You got an A*")
+    elif rawMark <= 80 and rawMark >= 70:
+        print("You got an A")
+    elif rawMark <= 10:
+        print("You failed")
 
-match rawMark:
-    case "hello":
-        print(100)
+grade(rawMark)
