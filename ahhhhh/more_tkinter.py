@@ -1,37 +1,50 @@
-import tkinter as tk
+import numpy as np
 
-# Function to submit parameters and run Manim simulation
-def submit():
-    # Collect and process input parameters
-    pass
+# Simulation parameters
+num_particles = 10
+dt = 0.01  # Time step
+g = np.array([0, -9.81])  # Gravity
 
-# Create the main window
-root = tk.Tk()
-root.title("Mechanics Simulator")
+# Particle properties
+positions = np.random.rand(num_particles, 2) * 10  # Random initial positions
+velocities = np.zeros((num_particles, 2))  # Initial velocities
+masses = np.ones(num_particles)  # Masses of particles
 
-# Create and place labels and entries
-tk.Label(root, text="Mass:").grid(row=0)
-mass_entry = tk.Entry(root)
-mass_entry.grid(row=0, column=1)
+def update_positions(positions, velocities, dt):
+    return positions + velocities * dt
 
-tk.Label(root, text="Initial Velocity:").grid(row=1)
-velocity_entry = tk.Entry(root)
-velocity_entry.grid(row=1, column=1)
+def update_velocities(velocities, dt):
+    return velocities + g * dt
 
-tk.Label(root, text="Force:").grid(row=2)
-force_entry = tk.Entry(root)
-force_entry.grid(row=2, column=1)
+import matplotlib.pyplot as plt
 
-tk.Label(root, text="Friction:").grid(row=3)
-friction_entry = tk.Entry(root)
-friction_entry.grid(row=3, column=1)
+def plot_particles(positions):
+    plt.clf()
+    plt.scatter(positions[:, 0], positions[:, 1])
+    plt.xlim(0, 10)
+    plt.ylim(0, 10)
+    plt.pause(0.01)
 
-tk.Label(root, text="Time:").grid(row=4)
-time_entry = tk.Entry(root)
-time_entry.grid(row=4, column=1)
+plt.ion()  # Turn on interactive mode for live updates
 
-# Submit button
-submit_button = tk.Button(root, text="Simulate", command=submit)
-submit_button.grid(row=5, columnspan=2)
+for _ in range(1000):  # Run the simulation for 1000 steps
+    positions = update_positions(positions, velocities, dt)
+    velocities = update_velocities(velocities, dt)
+    plot_particles(positions)
+    
+plt.ioff()  # Turn off interactive mode
+plt.show()
 
-root.mainloop()
+def handle_collisions(positions, velocities):
+    for i in range(len(positions)):
+        if positions[i, 0] <= 0 or positions[i, 0] >= 10:
+            velocities[i, 0] *= -1  # Reverse velocity on X-axis collision
+        if positions[i, 1] <= 0 or positions[i, 1] >= 10:
+            velocities[i, 1] *= -1  # Reverse velocity on Y-axis collision
+
+for _ in range(1000):
+    positions = update_positions(positions, velocities, dt)
+    velocities = update_velocities(velocities, dt)
+    handle_collisions(positions, velocities)
+    plot_particles(positions)
+
